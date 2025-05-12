@@ -1,8 +1,11 @@
 # Pakai image PHP + Apache
-FROM php:8.2-apache
+FROM php:8.3-apache
 
 # Aktifkan mod_rewrite untuk .htaccess
 RUN a2enmod rewrite
+
+# Install ekstensi PHP mysqli (opsional, jika kamu pakai MySQL)
+RUN docker-php-ext-install mysqli
 
 # Copy semua file project ke folder htdocs di server
 COPY . /var/www/html/
